@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { PageHero } from "@/components/page-hero";
 import { company, leaders, pillars, values } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
   description: "Vision, mission, values, and leadership of EKA Consulting and Trading PLC.",
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (

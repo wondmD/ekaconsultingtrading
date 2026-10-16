@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { PageHero } from "@/components/page-hero";
 import { supplyPoints, supplySupport } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Trading and supply",
   description:
     "Safety, fire protection, PPE, and technical product supply from EKA Consulting and Trading PLC, backed by inspection, installation, and advisory.",
-};
+  path: "/supply",
+});
 
 export default function SupplyPage() {
   return (

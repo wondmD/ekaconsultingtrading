@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { ButtonLink } from "@/components/button-link";
 import { PageHero } from "@/components/page-hero";
 import { trainingGroups } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Training",
   description:
     "Practical professional training from EKA Consulting and Trading PLC, including HSEQ, fire and emergency, technical safety, and soft skills.",
-};
+  path: "/training",
+});
 
 export default function TrainingPage() {
   return (

@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { EnquiryForm } from "@/components/enquiry-form";
 import { PageHero } from "@/components/page-hero";
 import { company, leaders } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
   description:
-    "Start a conversation with EKA Consulting and Trading PLC about consulting, training, or supply.",
-};
+    "Send an enquiry to EKA Consulting and Trading PLC about consulting, training, HSEQ, or supply.",
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

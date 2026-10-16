@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero } from "@/components/page-hero";
 import { serviceGroups } from "@/lib/content";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "HSEQ, risk, fire and emergency, occupational health, environment, and technical advisory services from EKA Consulting and Trading PLC.",
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (

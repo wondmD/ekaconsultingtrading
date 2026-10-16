@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ButtonLink } from "@/components/button-link";
+import { pageMetadata } from "@/lib/seo";
 import {
   company,
   disciplines,
@@ -10,6 +11,13 @@ import {
   serviceGroups,
   values,
 } from "@/lib/content";
+
+export const metadata = pageMetadata({
+  title: "Consulting, HSEQ, Training and Supply",
+  description:
+    "EKA Consulting and Trading PLC helps organizations improve safety, manage risk, train people, and source the right equipment.",
+  path: "/",
+});
 
 const homeServices = [
   ...serviceGroups,
