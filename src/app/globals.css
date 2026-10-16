@@ -1,26 +1,58 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f7f8;
+  --foreground: #10233f;
+  color-scheme: light;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-ink: #10233f;
+  --color-navy: #163056;
+  --color-blue: #0a62b5;
+  --color-green: #0b7a42;
+  --color-orange: #ef8a2a;
+  --color-ember: #a3470c;
+  --color-paper: #f4f7f8;
+  --color-cream: #ffffff;
+  --color-muted: #5c6b7c;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-ethiopic: var(--font-noto-ethiopic), var(--font-jakarta), sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: #0b7a42;
+  color: #ffffff;
+}
+
+:focus-visible {
+  outline: 2px solid #0b7a42;
+  outline-offset: 3px;
+}
+
+.field {
+  margin-top: 0.5rem;
+  width: 100%;
+  border-radius: 0.85rem;
+  border: 1px solid rgb(16 35 63 / 0.12);
+  background: #fff;
+  padding: 0.8rem 0.9rem;
+  font-size: 1rem;
+  outline: none;
+  transition:
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.field:focus {
+  border-color: #0b7a42;
+  box-shadow: 0 0 0 4px rgb(11 122 66 / 0.12);
 }
