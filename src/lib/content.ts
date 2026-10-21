@@ -1,6 +1,7 @@
 export const company = {
   name: "EKA Consulting and Trading PLC",
   email: "contact@ekaconsultingtrading.com",
+  address: "Woreda 04, Kolfe Keranio Sub City, Addis Ababa, Ethiopia",
   amharic: "ኢካ የማማከርና እና ትሬዲንግ ኃ/የተ/የግ/ማ",
   motto: "Tomorrow Begins with Today's Best.",
   mottoAmharic: "የነገ ጅማሬ የዛሬ ምርጥ ሥራ ነው!",
@@ -9,11 +10,9 @@ export const company = {
   overview:
     "EKA Consulting and Trading PLC is a professional consulting, technical advisory, training, safety solutions, supply, and trading company providing practical solutions to organizations across different sectors.",
   vision:
-    "To become a trusted and leading consulting, technical services, training, and trading company by providing practical knowledge, innovative solutions, quality products, and professional services that empower organizations and individuals to create safer, more productive, compliant, and sustainable operations.",
-  mission: [
-    "EKA Consulting and Trading PLC provides integrated consulting, technical advisory, professional training, safety solutions, product supply, and trading services that help organizations improve performance, strengthen safety, manage risk, meet applicable requirements, develop workforce competence, and achieve sustainable business success.",
-    "We combine professional expertise with reliable products and practical solutions to help our clients make better decisions and implement effective solutions.",
-  ],
+    "To be a trusted leader in consulting, technical services, training, and trading, driving safety, excellence, and sustainability.",
+  mission:
+    "To deliver reliable consulting, technical services, training, and quality products that enhance safety, performance, compliance, and sustainability.",
 } as const;
 
 export const disciplines = [
@@ -25,18 +24,6 @@ export const disciplines = [
   "Compliance",
   "Sustainability",
   "Trading & Supply",
-] as const;
-
-export const values = [
-  "Customer Focus",
-  "Accountability",
-  "Sustainability",
-  "Knowledge",
-  "Excellence",
-  "Innovation",
-  "Integrity",
-  "Quality",
-  "Safety",
 ] as const;
 
 export const leaders = [
@@ -55,7 +42,7 @@ export const pillars = [
   {
     index: "01",
     title: "Consulting, Technical Services & Training",
-    body: "Professional advisory, assessment, inspection, audit, management-system, risk-management, HSEQ, environmental, occupational-health, fire-safety, and competency-development services.",
+    body: "Professional advisory, assessment, inspection, audit, management-system, risk-management, HSEQ, environmental, occupational health and safety, fire-safety, and competency-development services.",
     href: "/services",
     cta: "Explore services",
   },
@@ -140,8 +127,8 @@ export const serviceGroups: readonly ServiceGroup[] = [
   {
     id: "health",
     index: "04",
-    title: "Occupational Health",
-    summary: "Exposure, hygiene, and workplace health advice.",
+    title: "Occupational Health and Safety",
+    summary: "Exposure, hygiene, and workplace health and safety advice.",
     href: "/services#health",
     items: [
       "Noise Monitoring",
@@ -248,24 +235,12 @@ export const supplySupport = [
   "Technical advisory",
 ] as const;
 
-export const industries = [
-  "Construction & Infrastructure",
-  "Education & Research",
-  "Food & Beverage",
-  "Energy & Utilities",
-  "Manufacturing",
-  "Oil & Gas",
-  "Mining",
-  "NGOs & Development Organizations",
-  "Government & Public Institutions",
-] as const;
-
 export const enquiryTopics = [
   "Consulting and technical advisory",
   "HSEQ",
   "Risk assessment",
   "Fire and emergency",
-  "Occupational health",
+  "Occupational Health and Safety",
   "Environment and sustainability",
   "Training",
   "Trading and supply",

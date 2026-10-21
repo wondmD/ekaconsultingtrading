@@ -9,6 +9,7 @@ import { nav } from "@/lib/content";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   function close() {
     setOpen(false);
@@ -22,11 +23,20 @@ export function Header() {
   }, [open]);
 
   useEffect(() => {
+    document.documentElement.classList.add("js");
     function onKey(event: KeyboardEvent) {
       if (event.key === "Escape") setOpen(false);
     }
+    function onScroll() {
+      setScrolled(window.scrollY > 8);
+    }
+    onScroll();
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
@@ -36,7 +46,11 @@ export function Header() {
         <div className="bg-orange" />
         <div className="bg-blue" />
       </div>
-      <header className="border-b border-ink/10 bg-white/90 backdrop-blur-md">
+      <header
+        className={`border-b border-ink/10 bg-white/90 backdrop-blur-md transition duration-200 ${
+          scrolled ? "shadow-md shadow-navy/5" : ""
+        }`}
+      >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:px-8">
           <Logo priority onClick={close} className="h-10 w-auto sm:h-11" />
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
@@ -76,12 +90,15 @@ export function Header() {
           </button>
         </div>
       </header>
-      {open ? (
-        <nav
-          id="mobile-nav"
-          aria-label="Mobile"
-          className="fixed inset-x-0 bottom-0 top-[calc(4rem+4px)] z-40 overflow-y-auto bg-white px-5 py-6 lg:hidden"
-        >
+      <nav
+        id="mobile-nav"
+        aria-label="Mobile"
+        aria-hidden={!open}
+        inert={!open}
+        className={`fixed inset-x-0 bottom-0 top-[calc(4rem+4px)] z-40 overflow-y-auto bg-white px-5 py-6 transition duration-300 lg:hidden ${
+          open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-3 opacity-0"
+        }`}
+      >
           <ul className="space-y-1">
             <li>
               <Link
@@ -114,7 +131,6 @@ export function Header() {
             </li>
           </ul>
         </nav>
-      ) : null}
     </div>
   );
 }

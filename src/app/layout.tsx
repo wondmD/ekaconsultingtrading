@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "HSEQ consulting",
     "risk assessment",
     "fire and emergency",
-    "occupational health",
+    "occupational health and safety",
     "environmental consulting",
     "safety training",
     "PPE and safety supply",
@@ -86,6 +86,12 @@ const jsonLd = {
       url: siteUrl,
       logo: `${siteUrl}/logo.png`,
       email: company.email,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Woreda 04, Kolfe Keranio Sub City",
+        addressLocality: "Addis Ababa",
+        addressCountry: "ET",
+      },
       slogan: company.motto,
       description: company.overview,
       employee: leaders.map((leader) => ({

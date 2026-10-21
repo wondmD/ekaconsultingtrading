@@ -2,7 +2,7 @@
 
 import { useActionState } from "react";
 import { submitEnquiry, type EnquiryState } from "@/app/contact/actions";
-import { company, enquiryTopics, leaders } from "@/lib/content";
+import { company, enquiryTopics } from "@/lib/content";
 
 const initial: EnquiryState = { ok: false };
 
@@ -70,9 +70,6 @@ export function EnquiryForm() {
       >
         {pending ? "Sending" : "Send enquiry"}
       </button>
-      <p className="mt-4 text-sm leading-relaxed text-muted">
-        It goes to {leaders[0].name}, {leaders[0].role}, and {leaders[1].name}, {leaders[1].role}.
-      </p>
     </form>
   );
 }

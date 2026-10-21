@@ -22,7 +22,10 @@ export default function TrainingPage() {
       <div className="mx-auto max-w-6xl px-5 py-14 sm:px-8">
         <div className="grid gap-4 md:grid-cols-2">
           {trainingGroups.map((group) => (
-            <section key={group.title} className="rounded-3xl bg-white p-6 ring-1 ring-ink/10 sm:p-8">
+            <section
+              key={group.title}
+              className="rounded-3xl bg-white p-6 ring-1 ring-ink/10 transition duration-200 hover:-translate-y-0.5 hover:shadow-md sm:p-8"
+            >
               <h2 className="text-2xl font-semibold tracking-tight">{group.title}</h2>
               <ul className="mt-5 space-y-2">
                 {group.items.map((item) => (

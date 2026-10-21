@@ -26,7 +26,7 @@ export default function SupplyPage() {
             {supplyPoints.map((point, index) => (
               <li
                 key={point}
-                className="flex gap-4 rounded-2xl bg-white px-4 py-4 ring-1 ring-ink/10"
+                className="flex gap-4 rounded-2xl bg-white px-4 py-4 ring-1 ring-ink/10 transition duration-200 hover:-translate-y-0.5 hover:ring-green/30"
               >
                 <span className="text-sm font-semibold text-orange">
                   {String(index + 1).padStart(2, "0")}

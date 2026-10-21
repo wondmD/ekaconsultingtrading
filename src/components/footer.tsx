@@ -7,11 +7,15 @@ export function Footer() {
     <footer className="mt-8 border-t border-ink/10 bg-white">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-[1.4fr_0.6fr_0.9fr]">
         <div>
-          <Logo variant="lockup" className="h-auto w-56 sm:w-64" />
+          <Logo variant="lockup" className="h-auto w-full max-w-56 sm:max-w-64" />
           <p className="mt-5 max-w-sm font-ethiopic text-sm leading-relaxed text-muted">
             {company.amharic}
           </p>
           <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">{company.motto}</p>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink">{company.address}</p>
+          <a className="mt-2 inline-block text-sm font-medium text-green" href={`mailto:${company.email}`}>
+            {company.email}
+          </a>
         </div>
         <div>
           <p className="text-sm font-semibold text-ink">Visit</p>
@@ -61,7 +65,6 @@ export function Footer() {
       <div className="border-t border-ink/10">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-5 text-xs text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
           <p>© 2026 {company.name}</p>
-          <p>General Manager, Engidawork Kibneh Abdi · Office Manager, Lidet Darge</p>
         </div>
       </div>
     </footer>
