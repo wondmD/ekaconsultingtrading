@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
+import { supabaseEnv } from "@/lib/supabase/env";
 
 export function createPublicClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+  const { url, key } = supabaseEnv();
   if (!url || !key) {
     throw new Error("Supabase URL or publishable key is missing");
   }

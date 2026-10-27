@@ -1,3 +1,5 @@
+import { supabaseEnv } from "@/lib/supabase/env";
+
 export type PostBlock =
   | { type: "h2" | "h3"; text: string }
   | { type: "p"; text: string }
@@ -37,19 +39,29 @@ export async function getPost(slug: string): Promise<Post | undefined> {
 }
 
 async function readPosts(query: string): Promise<PostRow[]> {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
-  if (!url || !key) throw new Error("Supabase URL or publishable key is missing");
+  const { url, key } = supabaseEnv();
+  if (!url || !key) {
+    console.error("Supabase URL or publishable key is missing");
+    return [];
+  }
 
-  const response = await fetch(`${url}/rest/v1/posts?${query}`, {
-    headers: {
-      apikey: key,
-      Authorization: `Bearer ${key}`,
-      Accept: "application/json",
-    },
-  });
-  if (!response.ok) throw new Error("Could not load posts");
-  return response.json();
+  try {
+    const response = await fetch(`${url}/rest/v1/posts?${query}`, {
+      headers: {
+        apikey: key,
+        Authorization: `Bearer ${key}`,
+        Accept: "application/json",
+      },
+    });
+    if (!response.ok) {
+      console.error("Could not load posts");
+      return [];
+    }
+    return response.json();
+  } catch (error) {
+    console.error("Could not load posts", error instanceof Error ? error.message : "");
+    return [];
+  }
 }
 
 export function formatPostDate(date: string) {
