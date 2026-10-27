@@ -86,6 +86,7 @@ const jsonLd = {
       url: siteUrl,
       logo: `${siteUrl}/logo.png`,
       email: company.email,
+      telephone: company.phones.map((phone) => phone.href.replace("tel:", "")),
       address: {
         "@type": "PostalAddress",
         streetAddress: "Woreda 04, Kolfe Keranio Sub City",

@@ -16,6 +16,13 @@ export function Footer() {
           <a className="mt-2 inline-block text-sm font-medium text-green" href={`mailto:${company.email}`}>
             {company.email}
           </a>
+          <p className="mt-2 flex flex-col gap-1">
+            {company.phones.map((phone) => (
+              <a key={phone.href} className="text-sm font-medium text-green" href={phone.href}>
+                {phone.label}
+              </a>
+            ))}
+          </p>
         </div>
         <div>
           <p className="text-sm font-semibold text-ink">Visit</p>

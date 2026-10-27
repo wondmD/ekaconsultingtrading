@@ -1,6 +1,10 @@
 export const company = {
   name: "EKA Consulting and Trading PLC",
   email: "contact@ekaconsultingtrading.com",
+  phones: [
+    { label: "0966348408", href: "tel:+251966348408" },
+    { label: "0970277375", href: "tel:+251970277375" },
+  ],
   address: "Woreda 04, Kolfe Keranio Sub City, Addis Ababa, Ethiopia",
   amharic: "ኢካ የማማከርና እና ትሬዲንግ ኃ/የተ/የግ/ማ",
   motto: "Tomorrow Begins with Today's Best.",
@@ -35,6 +39,7 @@ export const nav = [
   { href: "/services", label: "Services" },
   { href: "/training", label: "Training" },
   { href: "/supply", label: "Supply" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
 ] as const;
 

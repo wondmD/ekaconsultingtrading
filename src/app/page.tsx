@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Suspense } from "react";
 import { ButtonLink } from "@/components/button-link";
+import { formatPostDate, getPosts } from "@/lib/posts";
 import { HomeServices } from "@/components/home-services";
 import { PracticeSwitch } from "@/components/practice-switch";
 import { Reveal } from "@/components/reveal";
@@ -132,6 +134,10 @@ export default function Home() {
 
       <HomeServices />
 
+      <Suspense fallback={null}>
+        <LatestPosts />
+      </Suspense>
+
       <section className="mx-auto max-w-6xl px-5 pb-16 sm:px-8">
         <div className="flex flex-col gap-6 rounded-3xl bg-navy px-6 py-10 text-white sm:px-10 lg:flex-row lg:items-center lg:justify-between">
           <h2 className="max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
@@ -143,5 +149,38 @@ export default function Home() {
         </div>
       </section>
     </>
+  );
+}
+
+async function LatestPosts() {
+  const posts = await getPosts();
+  if (!posts.length) return null;
+
+  return (
+    <section className="mx-auto max-w-6xl px-4 py-14 sm:px-8">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="text-sm font-semibold text-green">Blog</p>
+          <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight sm:text-4xl">From the work.</h2>
+        </div>
+        <ButtonLink href="/blog" tone="ghost" className="w-full sm:w-auto">
+          All posts
+        </ButtonLink>
+      </div>
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+      {posts.map((post) => (
+        <Link
+          key={post.slug}
+          href={`/blog/${post.slug}`}
+          className="flex min-w-0 flex-col rounded-3xl bg-white p-5 ring-1 ring-ink/10 transition hover:-translate-y-0.5 hover:ring-green/30"
+        >
+          <p className="text-sm font-semibold text-orange">{post.topic}</p>
+          <h3 className="mt-3 text-balance text-lg font-semibold tracking-tight">{post.title}</h3>
+          <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{post.description}</p>
+          <p className="mt-4 text-sm text-muted">{formatPostDate(post.date)}</p>
+        </Link>
+      ))}
+      </div>
+    </section>
   );
 }

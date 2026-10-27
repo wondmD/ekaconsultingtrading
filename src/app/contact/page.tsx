@@ -21,10 +21,17 @@ export default function ContactPage() {
       <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 sm:px-8 lg:grid-cols-[0.8fr_1.2fr] lg:py-14">
         <aside className="rounded-3xl bg-white p-6 ring-1 ring-ink/10 sm:p-8">
           <p className="text-sm font-semibold text-green">Office</p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight">Visit or write</h2>
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight">Visit, call, or write</h2>
           <p className="mt-4 leading-relaxed">{company.address}</p>
+          <div className="mt-4 flex flex-col gap-1">
+            {company.phones.map((phone) => (
+              <a key={phone.href} className="inline-flex min-h-11 items-center font-medium text-green" href={phone.href}>
+                {phone.label}
+              </a>
+            ))}
+          </div>
           <a
-            className="mt-4 inline-flex min-h-11 items-center font-medium text-green"
+            className="inline-flex min-h-11 items-center font-medium text-green"
             href={`mailto:${company.email}`}
           >
             {company.email}

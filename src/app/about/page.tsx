@@ -57,6 +57,13 @@ export default function AboutPage() {
           <div>
             <p className="text-sm font-semibold text-green">Office</p>
             <p className="mt-2 max-w-md text-lg font-medium leading-relaxed">{company.address}</p>
+            <p className="mt-3 flex flex-col gap-1">
+              {company.phones.map((phone) => (
+                <a key={phone.href} className="font-medium text-green" href={phone.href}>
+                  {phone.label}
+                </a>
+              ))}
+            </p>
           </div>
           <ButtonLink href="/contact" className="w-full sm:w-auto">
             Contact the office
