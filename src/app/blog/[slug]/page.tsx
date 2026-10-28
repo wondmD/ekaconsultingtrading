@@ -10,6 +10,7 @@ export const instant = false;
 
 export async function generateStaticParams() {
   const posts = await getPosts();
+  if (!posts.length) return [{ slug: "__placeholder__" }];
   return posts.map((post) => ({ slug: post.slug }));
 }
 
